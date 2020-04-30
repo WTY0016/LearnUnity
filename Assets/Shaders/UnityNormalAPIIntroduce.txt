@@ -1,0 +1,132 @@
+1.UnityObjectToClipPos(float3) 模型顶点坐标转为视图坐标
+
+
+
+
+
+
+
+
+
+
+1.float3 WorldSpaceViewDir(float4 v) 模型空间顶点位置->世界空间到相机的方向
+2.UnityWorldSpaceViewDir 世界空间位置->相机的方向
+
+-仅可用于前向渲染 没有被归一化 normalize()
+3.WorldSpaceLightDir(float4 v) 模型空间顶点位置  返回世界中顶点到光源的方向
+4.UnityWorldSpaceLightDir() 世界顶点位置 返回世界中顶点到光源的方向
+
+5.UnityObjectToWorldNormal(float3 normal) 把法线从模型空间转到世界
+6.UnityObjectToWorldDir(float3 dir) 把方向从模型空间转到世界
+
+
+
+
+// Tranforms position from world to homogenous space
+inline float4 UnityWorldToClipPos( in float3 pos )
+{
+    return mul(UNITY_MATRIX_VP, float4(pos, 1.0));
+}
+
+// Tranforms position from view to homogenous space
+inline float4 UnityViewToClipPos( in float3 pos )
+{
+    return mul(UNITY_MATRIX_P, float4(pos, 1.0));
+}
+
+// Tranforms position from object to camera space
+inline float3 UnityObjectToViewPos( in float3 pos )
+{
+    return mul(UNITY_MATRIX_V, mul(unity_ObjectToWorld, float4(pos, 1.0))).xyz;
+}
+inline float3 UnityObjectToViewPos(float4 pos) // overload for float4; avoids "implicit truncation" warning for existing shaders
+{
+    return UnityObjectToViewPos(pos.xyz);
+}
+
+// Tranforms position from world to camera space
+inline float3 UnityWorldToViewPos( in float3 pos )
+{
+    return mul(UNITY_MATRIX_V, float4(pos, 1.0)).xyz;
+}
+
+// Transforms direction from object to world space
+inline float3 UnityObjectToWorldDir( in float3 dir )
+{
+    return normalize(mul((float3x3)unity_ObjectToWorld, dir));
+}
+
+// Transforms direction from world to object space
+inline float3 UnityWorldToObjectDir( in float3 dir )
+{
+    return normalize(mul((float3x3)unity_WorldToObject, dir));
+}
+
+// Transforms normal from object to world space
+inline float3 UnityObjectToWorldNormal( in float3 norm )
+{
+#ifdef UNITY_ASSUME_UNIFORM_SCALING
+    return UnityObjectToWorldDir(norm);
+#else
+    // mul(IT_M, norm) => mul(norm, I_M) => {dot(norm, I_M.col0), dot(norm, I_M.col1), dot(norm, I_M.col2)}
+    return normalize(mul(norm, (float3x3)unity_WorldToObject));
+#endif
+}
+
+// Computes world space light direction, from world space position
+inline float3 UnityWorldSpaceLightDir( in float3 worldPos )
+{
+    #ifndef USING_LIGHT_MULTI_COMPILE
+        return _WorldSpaceLightPos0.xyz - worldPos * _WorldSpaceLightPos0.w;
+    #else
+        #ifndef USING_DIRECTIONAL_LIGHT
+        return _WorldSpaceLightPos0.xyz - worldPos;
+        #else
+        return _WorldSpaceLightPos0.xyz;
+        #endif
+    #endif
+}
+
+// Computes world space light direction, from object space position
+// *Legacy* Please use UnityWorldSpaceLightDir instead
+inline float3 WorldSpaceLightDir( in float4 localPos )
+{
+    float3 worldPos = mul(unity_ObjectToWorld, localPos).xyz;
+    return UnityWorldSpaceLightDir(worldPos);
+}
+
+// Computes object space light direction
+inline float3 ObjSpaceLightDir( in float4 v )
+{
+    float3 objSpaceLightPos = mul(unity_WorldToObject, _WorldSpaceLightPos0).xyz;
+    #ifndef USING_LIGHT_MULTI_COMPILE
+        return objSpaceLightPos.xyz - v.xyz * _WorldSpaceLightPos0.w;
+    #else
+        #ifndef USING_DIRECTIONAL_LIGHT
+        return objSpaceLightPos.xyz - v.xyz;
+        #else
+        return objSpaceLightPos.xyz;
+        #endif
+    #endif
+}
+
+// Computes world space view direction, from object space position
+inline float3 UnityWorldSpaceViewDir( in float3 worldPos )
+{
+    return _WorldSpaceCameraPos.xyz - worldPos;
+}
+
+// Computes world space view direction, from object space position
+// *Legacy* Please use UnityWorldSpaceViewDir instead
+inline float3 WorldSpaceViewDir( in float4 localPos )
+{
+    float3 worldPos = mul(unity_ObjectToWorld, localPos).xyz;
+    return UnityWorldSpaceViewDir(worldPos);
+}
+
+// Computes object space view direction
+inline float3 ObjSpaceViewDir( in float4 v )
+{
+    float3 objSpaceCameraPos = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos.xyz, 1)).xyz;
+    return objSpaceCameraPos - v.xyz;
+}

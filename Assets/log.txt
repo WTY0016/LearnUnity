@@ -1,0 +1,51 @@
+2020/4/24 16:52:28 System.Boolean ms_LoadedIcons 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconInfo 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconWarn 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconError 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconInfoSmall 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconWarnSmall 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconErrorSmall 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconInfoMono 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconWarnMono 
+2020/4/24 16:52:28 UnityEngine.Texture2D iconErrorMono 
+2020/4/24 16:52:28 UnityEditor.ConsoleWindow ms_ConsoleWindow 
+2020/4/24 16:52:28 UnityEditor.ConsoleWindow+EntryDoubleClickedDelegate entryWithManagedCallbackDoubleClicked 
+2020/4/24 16:52:28 UnityEditor.GenericMenu+MenuFunction <>f__mg$cache0 
+2020/4/24 16:52:28 UnityEditor.GenericMenu+MenuFunction <>f__mg$cache1 
+2020/4/24 16:52:28 Void ShowConsoleWindowImmediate() 
+2020/4/24 16:52:28 Void ShowConsoleWindow(Boolean) 
+2020/4/24 16:52:28 Void LoadIcons() 
+2020/4/24 16:52:28 Void LogChanged() 
+2020/4/24 16:52:28 Boolean HasMode(Int32, Mode) 
+2020/4/24 16:52:28 Boolean HasFlag(ConsoleFlags) 
+2020/4/24 16:52:28 Void SetFlag(ConsoleFlags, Boolean) 
+2020/4/24 16:52:28 UnityEngine.Texture2D GetIconForErrorMode(Int32, Boolean) 
+2020/4/24 16:52:28 UnityEngine.GUIStyle GetStyleForErrorMode(Int32, Boolean, Boolean) 
+2020/4/24 16:52:28 UnityEngine.GUIStyle GetStatusStyleForErrorMode(Int32) 
+2020/4/24 16:52:28 System.String ContextString(UnityEditor.LogEntry) 
+2020/4/24 16:52:28 System.String GetFirstLine(System.String) 
+2020/4/24 16:52:28 System.String GetFirstTwoLines(System.String) 
+2020/4/24 16:52:28 Void ShowConsoleRow(Int32) 
+2020/4/24 16:52:28 Boolean GetConsoleErrorPause() 
+2020/4/24 16:52:28 Void SetConsoleErrorPause(Boolean) 
+2020/4/24 16:52:28 Void add_entryWithManagedCallbackDoubleClicked(EntryDoubleClickedDelegate) 
+2020/4/24 16:52:28 Void remove_entryWithManagedCallbackDoubleClicked(EntryDoubleClickedDelegate) 
+2020/4/24 16:52:28 Void SendEntryDoubleClicked(UnityEditor.LogEntry) 
+2020/4/24 17:09:10 System.Boolean ms_LoadedIcons 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconInfo 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconWarn 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconError 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconInfoSmall 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconWarnSmall 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconErrorSmall 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconInfoMono 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconWarnMono 
+2020/4/24 17:09:11 UnityEngine.Texture2D iconErrorMono 
+2020/4/24 17:09:11 UnityEditor.ConsoleWindow ms_ConsoleWindow 
+2020/4/24 17:09:11 UnityEditor.ConsoleWindow+EntryDoubleClickedDelegate entryWithManagedCallbackDoubleClicked 
+2020/4/24 17:09:11 UnityEditor.GenericMenu+MenuFunction <>f__mg$cache0 
+2020/4/24 17:09:11 UnityEditor.GenericMenu+MenuFunction <>f__mg$cache1 
+2020/4/24 17:09:11 Void ShowConsoleWindowImmediate() 
+2020/4/24 17:09:11 Void ShowConsoleWindow(Boolean) 
+2020/4/24 17:09:11 Void LoadIcons() 
+2020/4/24 17:09:11 Void 

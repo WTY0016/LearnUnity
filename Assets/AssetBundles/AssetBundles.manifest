@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2068623500
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: models.ty
+      Dependencies:
+        Dependency_0: textures.ty
+    Info_1:
+      Name: textures.ty
+      Dependencies:
+        Dependency_0: images
+    Info_2:
+      Name: images
+      Dependencies:
+        Dependency_0: atlas
+    Info_3:
+      Name: atlas
+      Dependencies:
+        Dependency_0: images
